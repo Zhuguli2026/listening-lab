@@ -218,46 +218,25 @@
         "use strict";
 
         // ---------- 内置数据 ----------
-        const builtInLessons = [
-            { id:1, title:"BBC精选", category:"BBC精选", count:"2000", sub:"95w+", 
-              desc:"英国广播新闻，含中英字幕、讲解及听写训练。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", cover:"🇬🇧",
-              transcript:"The United Kingdom has announced new measures to tackle climate change. The Prime Minister said that reducing carbon emissions is a top priority. Experts warn that without immediate action, the consequences could be severe." },
-            { id:2, title:"VOA慢速英语", category:"VOA慢速英语", count:"2000", sub:"126w+",
-              desc:"VOA官方授权，每日同步，适合初学者。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", cover:"🐢",
-              transcript:"Scientists say they have found evidence of water on Mars. This discovery could mean that life once existed on the red planet. The research was published in the journal Nature." },
-            { id:3, title:"VOA常速英语", category:"VOA常速英语", count:"1618", sub:"76w+",
-              desc:"VOA官方授权，常速新闻（暂停更新说明已标注）。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", cover:"⚡",
-              transcript:"The White House has ordered a significant budget cut, leading to the suspension of most VOA employees. The future of international broadcasting remains uncertain." },
-            { id:4, title:"经济学人合集", category:"经济学人", count:"2000", sub:"78w+",
-              desc:"《经济学人》国际新闻周刊，政商精英必读。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", cover:"📊",
-              transcript:"Global inflation continues to challenge central banks. The Federal Reserve signaled further interest rate hikes. Economists are divided on whether a soft landing is possible." },
-            { id:5, title:"VOA慢速-时事新闻", category:"VOA慢速英语", count:"1022", sub:"3w+",
-              desc:"VOA慢速 In the News 系列。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", cover:"📰",
-              transcript:"Health officials are concerned about a new virus variant spreading in several countries. Vaccination remains the best defense, according to experts." },
-            { id:6, title:"科学美国人", category:"科学美国人", count:"1973", sub:"33w+",
-              desc:"60秒科学，托福雅思听力绝佳材料。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", cover:"🔬",
-              transcript:"A new study reveals that dolphins use unique whistles to identify each other. This suggests a complex social structure similar to human names." },
-            { id:7, title:"NPR News", category:"NPR News", count:"928", sub:"9w+",
-              desc:"美国国家公共电台新闻，每月更新。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", cover:"🎙️",
-              transcript:"The Supreme Court heard arguments in a case that could reshape internet speech laws. Tech companies are watching closely." },
-            { id:8, title:"TED演讲视频", category:"TED演讲", count:"1258", sub:"43w+",
-              desc:"TED官方授权演讲，覆盖科技/设计/娱乐。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", cover:"💡",
-              transcript:"Creativity is not a talent, it's a way of operating. We need to create environments where people feel safe to fail and try new things." },
-            { id:9, title:"AP News", category:"AP News", count:"1060", sub:"5w+",
-              desc:"美联社一分钟新闻，每日更新。",
-              audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", cover:"📡",
-              transcript:"The latest jobs report shows stronger than expected growth. Unemployment remains at historic lows. Markets reacted positively to the news." }
-        ];
+       ;
+let lessons = [];
 
-        let lessons = [...builtInLessons];
+async function loadData() {
+    try {
+        const res = await fetch('data.json');
+        if (!res.ok) throw new Error('data.json 加载失败');
+        lessons = await res.json();
+    } catch (e) {
+        console.warn('使用默认数据', e);
+        lessons = [ /* 可以保留一小段备用数据 */ ];
+    }
+    filteredLessons = [...lessons];
+    renderCategories();
+    renderLessonList();
+    updatePlayerUI();
+}
+
+loadData();
         let filteredLessons = [...lessons];
         let currentIndex = -1;
         let isPlaying = false;
