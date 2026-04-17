@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>世界之声</title>
+    <title>听读空间 · 听力专栏</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;}
         body{background:#f5f7fc;display:flex;justify-content:center;min-height:100vh;padding:16px 12px;}
@@ -23,7 +23,7 @@
         .cover-badge{width:58px;height:58px;background:linear-gradient(145deg,#e7edf8,#d9e2f0);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;}
         .title-wrap{flex:1;}
         .current-title{font-size:22px;font-weight:680;color:#0b1e32;}
-        .current-cat{color:#617388;margin-top:4px;font-size:15px;}
+        .current-subtitle{color:#617388;margin-top:4px;font-size:15px;}
 
         .progress-area{margin:10px 0 12px;}
         .time-row{display:flex;align-items:center;gap:14px;}
@@ -32,15 +32,15 @@
         .progress-bar::-webkit-slider-thumb{width:18px;height:18px;background:#1e3c72;border-radius:50%;box-shadow:0 2px 8px #00234633;border:2px solid white;cursor:pointer;-webkit-appearance:none;}
 
         .ctrl-bar{display:flex;align-items:center;justify-content:space-between;margin-top:16px;flex-wrap:wrap;gap:12px;}
-        .ctrl-left{display:flex;align-items:center;gap:18px;}
-        .ctrl-btn{background:#f0f5fe;border:none;width:48px;height:48px;border-radius:30px;font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1e3a5f;box-shadow:0 4px 8px rgba(0,0,0,0.02);border:1px solid #e9f0fa;}
-        .play-btn{width:68px;height:68px;background:#1e3c72;color:white;font-size:36px;box-shadow:0 12px 18px -8px #10263e50;border:none;}
-        .ctrl-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+        .ctrl-left{display:flex;align-items:center;gap:12px;}
+        .ctrl-btn{background:#f0f5fe;border:none;width:40px;height:40px;border-radius:30px;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1e3a5f;box-shadow:0 4px 8px rgba(0,0,0,0.02);border:1px solid #e9f0fa;}
+        .play-btn{width:56px;height:56px;background:#1e3c72;color:white;font-size:28px;box-shadow:0 12px 18px -8px #10263e50;border:none;}
+        .ctrl-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
         .loop-group{display:flex;align-items:center;background:#f3f7ff;border-radius:40px;border:1px solid #dee9f5;}
         .loop-opt{padding:8px 16px;font-size:14px;font-weight:500;color:#1e3c72;cursor:pointer;border-radius:40px;}
         .loop-opt.active{background:#1e3c72;color:white;}
-        .ab-loop-btn{background:#f3f7ff;border:1px solid #dee9f5;padding:8px 16px;border-radius:40px;font-size:14px;font-weight:500;color:#1e3c72;cursor:pointer;display:flex;align-items:center;gap:6px;}
-        .ab-loop-btn.active{background:#e67e22;color:white;border-color:#e67e22;}
+        .ab-loop-btn{background:#f3f7ff;border:1px solid #dee9f5;padding:8px 16px;border-radius:40px;font-size:14px;font-weight:500;color:#1e3c72;cursor:pointer;}
+        .ab-loop-btn.active{background:#e67e22;color:white;}
         .fav-toggle{padding:8px 18px;border-radius:40px;font-size:14px;font-weight:500;background:#f3f7ff;border:1px solid #dee9f5;color:#1e3c72;cursor:pointer;}
         .speed-select{padding:8px 12px;border-radius:30px;border:1px solid #dee9f5;background:white;font-size:14px;}
 
@@ -48,58 +48,52 @@
         .fav-badge{background:#fff2e6;padding:8px 18px;border-radius:40px;color:#a65200;font-weight:500;border:1px solid #ffe4cc;cursor:pointer;}
         .vocab-badge{background:#e9eefa;padding:8px 18px;border-radius:40px;color:#1e3c72;font-weight:500;border:1px solid #cbdaf0;cursor:pointer;}
 
-        /* 原文/听写面板 */
         .extra-panel{margin-top:24px;border-top:1px solid #e9ecf2;padding-top:20px;}
         .panel-tabs{display:flex;gap:20px;margin-bottom:16px;}
         .tab-btn{font-size:16px;font-weight:500;color:#6f85a0;cursor:pointer;padding-bottom:8px;border-bottom:2px solid transparent;}
         .tab-btn.active{color:#1e3c72;border-bottom-color:#1e3c72;}
-        .transcript-box{background:#f9fbfe;border-radius:24px;padding:20px;line-height:1.7;color:#1e2f44;max-height:300px;overflow-y:auto;font-size:15px;border:1px solid #eef2f8;}
+        .transcript-box{background:#f9fbfe;border-radius:24px;padding:20px;line-height:1.7;color:#1e2f44;max-height:300px;overflow-y:auto;font-size:15px;border:1px solid #eef2f8;white-space:pre-wrap;}
         .transcript-header{display:flex;justify-content:space-between;margin-bottom:12px;}
 
-        /* 听写模式切换 */
         .mode-switch{display:flex;gap:12px;margin-bottom:16px;}
         .mode-btn{padding:6px 16px;border-radius:30px;border:1px solid #d7e0eb;background:#fff;color:#44566c;font-weight:500;cursor:pointer;font-size:14px;}
-        .mode-btn.active{background:#1e3c72;color:#fff;border-color:#1e3c72;}
+        .mode-btn.active{background:#1e3c72;color:#fff;}
         .refresh-btn{margin-left:auto;padding:6px 16px;border-radius:30px;border:1px solid #cbd5e1;background:#f8fafc;cursor:pointer;font-size:14px;}
-
         .word-selector{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-        .word-chip{padding:6px 14px;background:#fff;border:1px solid #d7e0eb;border-radius:30px;font-size:14px;cursor:pointer;transition:all 0.1s;}
-        .word-chip.selected{background:#1e3c72;color:white;border-color:#1e3c72;}
-
+        .word-chip{padding:6px 14px;background:#fff;border:1px solid #d7e0eb;border-radius:30px;font-size:14px;cursor:pointer;}
+        .word-chip.selected{background:#1e3c72;color:white;}
         .dictation-text{background:#fff;border-radius:20px;padding:20px;border:1px solid #e2eaf5;margin:16px 0;}
         .blank-input{display:inline-block;width:100px;margin:0 4px;padding:4px 8px;border:1px solid #bcc9dc;border-radius:16px;text-align:center;}
-        .error-word-item{display:inline-flex;align-items:center;margin-left:6px;}
-        .add-vocab-btn{background:none;border:none;color:#e67e22;cursor:pointer;font-size:14px;margin-left:4px;}
-
         .check-btn{padding:10px 24px;background:#1e3c72;color:white;border:none;border-radius:30px;font-weight:500;cursor:pointer;}
-        .result-feedback{margin-top:12px;font-weight:500;}
 
-        /* 生词本面板 (浮层式) */
-        .vocab-panel{background:#fff;border-radius:24px;padding:20px;margin-top:20px;border:1px solid #eef2f8;box-shadow:0 8px 20px rgba(0,0,0,0.04);}
-        .vocab-header{display:flex;justify-content:space-between;margin-bottom:16px;}
-        .vocab-list{max-height:200px;overflow-y:auto;}
-        .vocab-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #edf2f8;}
-        .vocab-word{font-weight:600;color:#1e3c72;}
-        .vocab-source{font-size:13px;color:#6f85a0;}
-        .delete-vocab{color:#c0392b;cursor:pointer;padding:4px 8px;}
-
-        .list-header{display:flex;justify-content:space-between;margin:20px 0 14px;align-items:center;}
+        .list-header{display:flex;justify-content:space-between;margin:20px 0 14px;}
         .section-title{font-weight:650;color:#1e2f44;font-size:20px;}
         .count-badge{background:#e4ebf5;padding:4px 14px;border-radius:30px;color:#2e4b6e;}
 
-        .lesson-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
-        .lesson-card{background:#ffffff;border-radius:24px;padding:18px;box-shadow:0 12px 22px -8px rgba(20,40,70,0.06);border:1px solid #f0f4fe;transition:all 0.2s;cursor:pointer;}
-        .lesson-card:hover{transform:translateY(-3px);box-shadow:0 22px 28px -14px #14273e1a;border-color:#cbdaf0;}
-        .lesson-card.active-card{border:2px solid #1e3c72;background:#f6faff;}
-        .card-top{display:flex;gap:12px;margin-bottom:12px;}
-        .card-cover{width:52px;height:52px;background:#eef3fc;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;}
-        .card-info{flex:1;}
-        .card-title{font-weight:680;color:#0f293f;font-size:17px;}
-        .card-meta{display:flex;gap:16px;margin:6px 0 8px;font-size:13px;color:#58708c;}
-        .card-desc{font-size:13px;color:#4a607a;line-height:1.5;margin:8px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-        .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
-        .fav-icon{font-size:22px;color:#b0c3db;cursor:pointer;}
-        .fav-icon.favorited{color:#e67e22;}
+        .category-grid{display:flex;flex-direction:column;gap:16px;}
+        .category-card{background:#fff;border-radius:28px;padding:18px 20px;box-shadow:0 12px 22px -8px rgba(20,40,70,0.06);border:1px solid #f0f4fe;}
+        .category-header{display:flex;align-items:center;gap:12px;cursor:pointer;}
+        .category-cover{width:52px;height:52px;background:#eef3fc;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;}
+        .category-info{flex:1;}
+        .category-title{font-weight:680;color:#0f293f;font-size:18px;}
+        .category-meta{display:flex;gap:16px;margin-top:4px;font-size:13px;color:#58708c;}
+        .category-desc{font-size:14px;color:#4a607a;margin-top:6px;}
+        .expand-icon{font-size:24px;color:#8da0b8;transition:0.2s;}
+        .expanded .expand-icon{transform:rotate(90deg);}
+
+        .lessons-list{display:none;margin-top:16px;border-top:1px solid #eef2f8;padding-top:12px;}
+        .expanded .lessons-list{display:block;}
+        .lesson-item-sub{padding:12px 16px;background:#f9fbfe;border-radius:18px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;border:1px solid transparent;}
+        .lesson-item-sub:hover{background:#eef4ff;border-color:#cbdaf0;}
+        .lesson-item-sub.active{background:#e0ebff;border-color:#1e3c72;}
+        .lesson-index{width:28px;height:28px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;color:#1e3c72;}
+        .lesson-info-sub{flex:1;}
+        .lesson-title-sub{font-weight:600;color:#1e293b;}
+
+        .vocab-panel{background:#fff;border-radius:24px;padding:20px;margin-top:20px;border:1px solid #eef2f8;}
+        .vocab-header{display:flex;justify-content:space-between;margin-bottom:16px;}
+        .vocab-list{max-height:200px;overflow-y:auto;}
+        .vocab-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #edf2f8;}
 
         #audioPlayer{display:none;}
         .footer-note{margin-top:40px;text-align:center;color:#859ab3;font-size:14px;border-top:1px solid #dee8f2;padding-top:24px;}
@@ -108,8 +102,8 @@
 <body>
 <div id="app">
     <div class="app-header">
-        <h1>🎧 轻听世界</h1>
-        <p>双模听写 · 生词本</p>
+        <h1>🎧 听读空间</h1>
+        <p></p>
     </div>
 
     <div class="categories-wrap" id="categoryContainer">
@@ -125,8 +119,8 @@
         <div class="now-info">
             <div class="cover-badge" id="playerCover">🎵</div>
             <div class="title-wrap">
-                <div class="current-title" id="currentTitle">点击卡片开始播放</div>
-                <div class="current-cat" id="currentCat"></div>
+                <div class="current-title" id="currentTitle">点击课时播放</div>
+                <div class="current-subtitle" id="currentSubtitle"></div>
             </div>
         </div>
         <div class="progress-area">
@@ -157,7 +151,6 @@
             </div>
         </div>
 
-        <!-- 扩展面板 (原文/听写) -->
         <div class="extra-panel">
             <div class="panel-tabs">
                 <span class="tab-btn active" data-tab="transcript">📄 原文</span>
@@ -166,7 +159,7 @@
             <div id="transcriptPanel">
                 <div class="transcript-header">
                     <span>📖 听力原文</span>
-                    <button id="toggleTranscriptBtn" style="background:none;border:none;color:#1e3c72;font-size:14px;cursor:pointer;">隐藏</button>
+                    <button id="toggleTranscriptBtn" style="background:none;border:none;color:#1e3c72;">隐藏</button>
                 </div>
                 <div class="transcript-box" id="transcriptContent">暂无原文</div>
             </div>
@@ -177,86 +170,94 @@
                         <span class="mode-btn" data-dict-mode="custom">✏️ 自定义选择</span>
                     </div>
                     <button class="refresh-btn" id="refreshDictationBtn">🔄 刷新题目</button>
-                    <button id="toggleAnswerHintBtn" style="margin-left:8px; padding:6px 12px; border-radius:30px; border:1px solid #cbd5e1; background:#fff; font-size:13px; cursor:pointer;">👁️ 显示原文</button>
                 </div>
                 <div id="customWordSelectorWrapper" style="display:none;">
                     <div style="margin-bottom:8px; font-size:14px; color:#44566c;">点击词汇设为填空项：</div>
                     <div class="word-selector" id="wordSelector"></div>
                 </div>
                 <div class="dictation-text" id="dictationExercise"></div>
-                <div style="display:flex; gap:12px; align-items:center;">
-                    <button class="check-btn" id="checkDictationBtn">✅ 校对答案</button>
-                    <span id="dictationFeedback" style="font-weight:500;"></span>
-                </div>
-                <!-- 生词本面板（位于听写区下方） -->
-                <div id="vocabPanelInDictation" style="display:none;"></div>
+                <button class="check-btn" id="checkDictationBtn">✅ 校对答案</button>
+                <div class="result-feedback" id="dictationFeedback"></div>
             </div>
         </div>
     </div>
 
-    <!-- 生词本全局面板（点击顶部按钮展开） -->
+    <div class="list-header">
+        <span class="section-title">📚 听力专栏</span>
+        <span class="count-badge" id="lessonCount">9 个栏目</span>
+    </div>
+    <div class="category-grid" id="categoryList"></div>
+    <audio id="audioPlayer" preload="metadata"></audio>
+
     <div id="globalVocabPanel" class="vocab-panel" style="display:none;">
-        <div class="vocab-header">
-            <span style="font-weight:650; color:#1e3c72;">📘 我的生词本</span>
-            <button id="clearAllVocabBtn" style="background:none; border:none; color:#c0392b; cursor:pointer; font-size:13px;">清空全部</button>
-        </div>
+        <div class="vocab-header"><span>📘 生词本</span><button id="clearAllVocabBtn">清空</button></div>
         <div class="vocab-list" id="vocabListContainer"></div>
     </div>
-
-    <div class="list-header">
-        <span class="section-title">📚 听力库 · 9大栏目</span>
-        <span class="count-badge" id="lessonCount">0 个资源</span>
-    </div>
-    <div class="lesson-grid" id="lessonList"></div>
-    <audio id="audioPlayer" preload="metadata"></audio>
     <div class="footer-note">
-        ⚡ 朱古力课堂 ©️2002-2026 ⚡   </div>
+        朱古力课堂 © 2002-2026
+    </div>
 </div>
 
 <script>
     (function(){
         "use strict";
 
-        // ---------- 内置数据 ----------
-       ;
-let lessons = [];
+        // ---------- 初始数据 (九大栏目，每个栏目内含示例课时，可自行增删) ----------
+        const DEFAULT_CATEGORIES = [
+            { id:1, title:"BBC精选", category:"BBC精选", count:"2000", sub:"95w+", desc:"英国广播新闻，含中英字幕、讲解及听写训练。", cover:"🇬🇧",
+              lessons: [
+                  { id:"1-1", title:"气候变化新措施", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", transcript:"The United Kingdom has announced new measures to tackle climate change. The Prime Minister said that reducing carbon emissions is a top priority. Experts warn that without immediate action, the consequences could be severe." },
+                  { id:"1-2", title:"经济复苏计划", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", transcript:"The government has unveiled a multi-billion pound recovery plan aimed at boosting the post-pandemic economy." }
+              ] },
+            { id:2, title:"VOA慢速英语", category:"VOA慢速英语", count:"2000", sub:"126w+", desc:"VOA官方授权，每日同步，适合初学者。", cover:"🐢",
+              lessons: [
+                  { id:"2-1", title:"火星发现水证据", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", transcript:"Scientists say they have found evidence of water on Mars. This discovery could mean that life once existed on the red planet. The research was published in the journal Nature." }
+              ] },
+            { id:3, title:"VOA常速英语", category:"VOA常速英语", count:"1618", sub:"76w+", desc:"VOA官方授权，常速新闻（暂停更新说明已标注）。", cover:"⚡",
+              lessons: [
+                  { id:"3-1", title:"白宫预算削减", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", transcript:"The White House has ordered a significant budget cut, leading to the suspension of most VOA employees. The future of international broadcasting remains uncertain." }
+              ] },
+            { id:4, title:"经济学人合集", category:"经济学人", count:"2000", sub:"78w+", desc:"《经济学人》国际新闻周刊，政商精英必读。", cover:"📊",
+              lessons: [
+                  { id:"4-1", title:"全球通胀挑战", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", transcript:"Global inflation continues to challenge central banks. The Federal Reserve signaled further interest rate hikes. Economists are divided on whether a soft landing is possible." }
+              ] },
+            { id:5, title:"VOA慢速-时事新闻", category:"VOA慢速英语", count:"1022", sub:"3w+", desc:"VOA慢速 In the News 系列。", cover:"📰",
+              lessons: [
+                  { id:"5-1", title:"新病毒变种", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", transcript:"Health officials are concerned about a new virus variant spreading in several countries. Vaccination remains the best defense, according to experts." }
+              ] },
+            { id:6, title:"科学美国人", category:"科学美国人", count:"1973", sub:"33w+", desc:"60秒科学，托福雅思听力绝佳材料。", cover:"🔬",
+              lessons: [
+                  { id:"6-1", title:"海豚独特哨声", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", transcript:"A new study reveals that dolphins use unique whistles to identify each other. This suggests a complex social structure similar to human names." }
+              ] },
+            { id:7, title:"NPR News", category:"NPR News", count:"928", sub:"9w+", desc:"美国国家公共电台新闻，每月更新。", cover:"🎙️",
+              lessons: [
+                  { id:"7-1", title:"最高法院网络言论案", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", transcript:"The Supreme Court heard arguments in a case that could reshape internet speech laws. Tech companies are watching closely." }
+              ] },
+            { id:8, title:"TED演讲视频", category:"TED演讲", count:"1258", sub:"43w+", desc:"TED官方授权演讲，覆盖科技/设计/娱乐。", cover:"💡",
+              lessons: [
+                  { id:"8-1", title:"创造力是一种操作方式", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", transcript:"Creativity is not a talent, it's a way of operating. We need to create environments where people feel safe to fail and try new things." }
+              ] },
+            { id:9, title:"AP News", category:"AP News", count:"1060", sub:"5w+", desc:"美联社一分钟新闻，每日更新。", cover:"📡",
+              lessons: [
+                  { id:"9-1", title:"就业报告强劲", audio:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", transcript:"The latest jobs report shows stronger than expected growth. Unemployment remains at historic lows. Markets reacted positively to the news." }
+              ] }
+        ];
 
-async function loadData() {
-    try {
-        const res = await fetch('data.json');
-        if (!res.ok) throw new Error('data.json 加载失败');
-        lessons = await res.json();
-    } catch (e) {
-        console.warn('使用默认数据', e);
-        lessons = [ /* 可以保留一小段备用数据 */ ];
-    }
-    filteredLessons = [...lessons];
-    renderCategories();
-    renderLessonList();
-    updatePlayerUI();
-}
-
-loadData();
-        let filteredLessons = [...lessons];
-        let currentIndex = -1;
+        // ---------- 全局变量 ----------
+        let categories = [];
+        let filteredCategories = [];
+        let currentLesson = null;
+        let currentCategory = null;
         let isPlaying = false;
         let loopMode = 0;
         let favorites = new Set();
-        let vocabList = [];  // 生词本 { word, sourceTitle, timestamp }
-
-        // AB循环
-        let abLoopActive = false;
-        let loopStart = 0;
-        let loopEnd = 0;
-
-        // 听写模式
+        let vocabList = [];
         let dictMode = 'random';
-        let currentWords = [];
         let selectedWords = new Set();
-        const randomBlanksCount = 5;
-        let showAnswerHint = false; // 是否显示原文提示
+        let currentWords = [];
+        let abLoopActive = false, loopStart = 0, loopEnd = 0;
 
-        // DOM
+        // DOM 元素
         const audioPlayer = document.getElementById('audioPlayer');
         const playBtn = document.getElementById('playBtn');
         const prevBtn = document.getElementById('prevBtn');
@@ -266,15 +267,14 @@ loadData();
         const durationTimeSpan = document.getElementById('durationTime');
         const speedSelect = document.getElementById('speedSelect');
         const currentTitleEl = document.getElementById('currentTitle');
-        const currentCatEl = document.getElementById('currentCat');
+        const currentSubtitleEl = document.getElementById('currentSubtitle');
         const playerCover = document.getElementById('playerCover');
-        const lessonListEl = document.getElementById('lessonList');
+        const categoryListEl = document.getElementById('categoryList');
         const categoryContainer = document.getElementById('categoryContainer');
         const lessonCountSpan = document.getElementById('lessonCount');
         const favCurrentBtn = document.getElementById('favCurrentBtn');
         const showFavoritesBtn = document.getElementById('showFavoritesBtn');
         const favCountSpan = document.getElementById('favCount');
-        const abLoopBtn = document.getElementById('abLoopBtn');
         const transcriptContent = document.getElementById('transcriptContent');
         const toggleTranscriptBtn = document.getElementById('toggleTranscriptBtn');
         const tabBtns = document.querySelectorAll('.tab-btn');
@@ -287,377 +287,182 @@ loadData();
         const dictationFeedback = document.getElementById('dictationFeedback');
         const modeBtns = document.querySelectorAll('[data-dict-mode]');
         const refreshBtn = document.getElementById('refreshDictationBtn');
-        const toggleAnswerHintBtn = document.getElementById('toggleAnswerHintBtn');
         const showVocabBtn = document.getElementById('showVocabBtn');
         const vocabCountSpan = document.getElementById('vocabCount');
         const globalVocabPanel = document.getElementById('globalVocabPanel');
         const vocabListContainer = document.getElementById('vocabListContainer');
         const clearAllVocabBtn = document.getElementById('clearAllVocabBtn');
+        const abLoopBtn = document.getElementById('abLoopBtn');
 
         let currentViewMode = 'all';
-        let currentCategory = 'all';
+        let currentCatFilter = 'all';
 
         // ---------- 辅助函数 ----------
-        function formatTime(sec) { if(isNaN(sec)) return '0:00'; const m=Math.floor(sec/60),s=Math.floor(sec%60); return `${m}:${s<10?'0':''}${s}`; }
-        function updateFavCountUI() { favCountSpan.textContent = favorites.size; }
-        function saveFavorites() { localStorage.setItem('listen_fav_v5', JSON.stringify([...favorites])); }
-        function loadFavorites() { try{ const v=localStorage.getItem('listen_fav_v5'); if(v) favorites=new Set(JSON.parse(v)); }catch(e){} updateFavCountUI(); }
-        function toggleFavorite(id) { if(favorites.has(id)) favorites.delete(id); else favorites.add(id); saveFavorites(); updateFavCountUI(); renderLessonList(); updateFavButtonText(); }
-        function updateFavButtonText() { if(currentIndex>=0&&filteredLessons[currentIndex]) favCurrentBtn.innerHTML = favorites.has(filteredLessons[currentIndex].id)?'❤️ 已收藏':'🤍 收藏'; else favCurrentBtn.innerHTML='🤍 收藏'; }
-
-        // 生词本逻辑
-        function loadVocab() { try{ const v=localStorage.getItem('vocab_list'); if(v) vocabList=JSON.parse(v); }catch(e){} updateVocabCountUI(); }
-        function saveVocab() { localStorage.setItem('vocab_list', JSON.stringify(vocabList)); updateVocabCountUI(); renderVocabList(); }
-        function updateVocabCountUI() { vocabCountSpan.textContent = vocabList.length; }
-        function addWordToVocab(word, sourceTitle) {
-            if(!word) return;
-            if(!vocabList.some(item=>item.word.toLowerCase()===word.toLowerCase())) {
-                vocabList.push({ word, source: sourceTitle, time: new Date().toLocaleString() });
-                saveVocab();
-            }
-        }
-        function removeWordFromVocab(word) {
-            vocabList = vocabList.filter(item => item.word.toLowerCase() !== word.toLowerCase());
-            saveVocab();
-        }
-        function renderVocabList() {
+        function formatTime(sec){ if(isNaN(sec))return'0:00'; const m=Math.floor(sec/60),s=Math.floor(sec%60); return`${m}:${s<10?'0':''}${s}`; }
+        function updateFavUI(){ favCountSpan.textContent = favorites.size; }
+        function loadFav(){ try{ const v=localStorage.getItem('fav_lessons_v2'); if(v) favorites=new Set(JSON.parse(v)); }catch(e){} updateFavUI(); }
+        function saveFav(){ localStorage.setItem('fav_lessons_v2', JSON.stringify([...favorites])); updateFavUI(); }
+        function loadVocab(){ try{ const v=localStorage.getItem('vocab_list_v2'); if(v) vocabList=JSON.parse(v); }catch(e){} updateVocabUI(); }
+        function saveVocab(){ localStorage.setItem('vocab_list_v2', JSON.stringify(vocabList)); updateVocabUI(); }
+        function updateVocabUI(){ vocabCountSpan.textContent = vocabList.length; renderVocabList(); }
+        function addToVocab(word, source){ if(!vocabList.find(v=>v.word.toLowerCase()===word.toLowerCase())){ vocabList.push({word, source}); saveVocab(); } }
+        function removeVocab(word){ vocabList = vocabList.filter(v=>v.word!==word); saveVocab(); }
+        function renderVocabList(){
             if(!vocabListContainer) return;
-            if(vocabList.length===0) { vocabListContainer.innerHTML='<div style="color:#888;padding:10px;">暂无生词</div>'; return; }
+            if(!vocabList.length){ vocabListContainer.innerHTML='<div style="color:#888;">暂无生词</div>'; return; }
             let html='';
-            vocabList.forEach(item=>{
-                html+=`<div class="vocab-item"><span><span class="vocab-word">${item.word}</span> <span class="vocab-source">${item.source||''}</span></span>
-                    <span class="delete-vocab" data-word="${item.word}">🗑️</span></div>`;
-            });
+            vocabList.forEach(v=>{ html+=`<div class="vocab-item"><span><strong>${v.word}</strong> <span style="color:#6f85a0;">${v.source||''}</span></span><span style="cursor:pointer;color:#c0392b;" data-word="${v.word}">🗑️</span></div>`; });
             vocabListContainer.innerHTML=html;
-            document.querySelectorAll('.delete-vocab').forEach(el=>el.addEventListener('click',e=>{
-                const w = e.target.dataset.word;
-                removeWordFromVocab(w);
-            }));
+            document.querySelectorAll('.vocab-item span[data-word]').forEach(el=> el.addEventListener('click',e=> removeVocab(e.target.dataset.word)));
         }
 
-        // 更新UI
-        function updatePlayerUI() {
-            if(currentIndex>=0 && filteredLessons[currentIndex]) {
-                const l=filteredLessons[currentIndex];
-                currentTitleEl.textContent=l.title; currentCatEl.textContent=l.category||''; playerCover.textContent=l.cover||'🎵';
-                transcriptContent.textContent = l.transcript || '暂无原文';
-                updateDictationPanel();
-            } else { 
-                currentTitleEl.textContent='点击卡片开始播放'; currentCatEl.textContent=''; playerCover.textContent='🎵'; 
-                transcriptContent.textContent='暂无原文';
-            }
-            updateFavButtonText();
-        }
-
-        function extractWordsFromTranscript() {
-            if(currentIndex<0 || !filteredLessons[currentIndex]) return [];
-            const text = filteredLessons[currentIndex].transcript || '';
-            const words = text.split(/\s+/).filter(w=>w.length>1).map(w=>w.replace(/[.,!?;:]/g,''));
-            return [...new Set(words)];
-        }
-
-        function updateDictationPanel() {
-            currentWords = extractWordsFromTranscript();
-            if(dictMode === 'custom') {
-                customWordSelectorWrapper.style.display = 'block';
-                refreshBtn.style.display = 'none';
-                renderWordSelector();
+        function updatePlayerUI(){
+            if(currentLesson){
+                currentTitleEl.textContent = currentLesson.title;
+                currentSubtitleEl.textContent = currentCategory?.title || '';
+                playerCover.textContent = currentCategory?.cover || '🎵';
+                transcriptContent.textContent = currentLesson.transcript || '暂无原文';
             } else {
-                customWordSelectorWrapper.style.display = 'none';
-                refreshBtn.style.display = 'flex';
+                currentTitleEl.textContent = '点击课时播放';
+                currentSubtitleEl.textContent = '';
+                playerCover.textContent = '🎵';
+                transcriptContent.textContent = '暂无原文';
             }
-            renderDictationExercise();
+            const id = currentLesson?.id;
+            favCurrentBtn.innerHTML = (id && favorites.has(id)) ? '❤️ 已收藏' : '🤍 收藏';
+            if(dictationPanel.style.display !== 'none') updateDictationPanel();
         }
 
-        function renderWordSelector() {
-            if(!currentWords.length) { wordSelectorDiv.innerHTML = '<span style="color:#888;">暂无词汇</span>'; return; }
-            let html = '';
-            currentWords.forEach(word => {
-                const selected = selectedWords.has(word) ? 'selected' : '';
-                html += `<span class="word-chip ${selected}" data-word="${word}">${word}</span>`;
-            });
-            wordSelectorDiv.innerHTML = html;
-            document.querySelectorAll('.word-chip').forEach(chip => {
-                chip.addEventListener('click', () => {
-                    const word = chip.dataset.word;
-                    if(selectedWords.has(word)) { selectedWords.delete(word); chip.classList.remove('selected'); }
-                    else { selectedWords.add(word); chip.classList.add('selected'); }
-                    renderDictationExercise();
-                });
-            });
-        }
-
-        function renderDictationExercise() {
-            const lesson = currentIndex>=0 ? filteredLessons[currentIndex] : null;
-            if(!lesson || !lesson.transcript) {
-                dictationExercise.innerHTML = '<span style="color:#888;">暂无原文，无法生成填空</span>';
-                return;
-            }
-            let text = lesson.transcript;
-            let wordsToBlank = [];
-            
-            if(dictMode === 'custom') {
-                wordsToBlank = Array.from(selectedWords);
-                if(wordsToBlank.length === 0) {
-                    dictationExercise.innerHTML = '<span style="color:#888;">请在词块中选择至少一个词汇作为填空项</span>';
-                    return;
-                }
-            } else {
-                if(currentWords.length === 0) {
-                    dictationExercise.innerHTML = '<span style="color:#888;">原文词汇不足</span>';
-                    return;
-                }
-                const shuffled = [...currentWords].sort(()=>0.5-Math.random());
-                wordsToBlank = shuffled.slice(0, Math.min(randomBlanksCount, currentWords.length));
-            }
-
-            const pattern = new RegExp(`\\b(${wordsToBlank.join('|')})\\b`, 'gi');
-            let exerciseHtml = text.replace(pattern, (match) => {
-                return `<input type="text" class="blank-input" data-answer="${match}" placeholder="_____" />`;
-            });
-            // 如果开启了显示原文提示，可以在input内预填或占位符？这里不做预填
-            dictationExercise.innerHTML = exerciseHtml;
-            // 隐藏原文提示状态不影响渲染
-        }
-
-        function generateRandomDictation() {
-            if(dictMode !== 'random') return;
-            renderDictationExercise();
-        }
-
-        function checkDictation() {
-            const inputs = document.querySelectorAll('.blank-input');
-            if(inputs.length === 0) { dictationFeedback.textContent = '当前没有填空项'; return; }
-            let correct = 0, total = inputs.length;
-            // 清除之前的添加按钮
-            document.querySelectorAll('.error-word-item').forEach(el=>el.remove());
-            inputs.forEach(inp => {
-                const answer = inp.dataset.answer;
-                const userAnswer = inp.value.trim();
-                if(userAnswer.toLowerCase() === answer.toLowerCase()) {
-                    inp.style.borderColor = '#2ecc71';
-                    inp.style.backgroundColor = '#eafaf1';
-                    correct++;
-                } else {
-                    inp.style.borderColor = '#e74c3c';
-                    inp.style.backgroundColor = '#fdedec';
-                    // 添加“加入生词本”按钮
-                    const parent = inp.parentNode;
-                    const span = document.createElement('span');
-                    span.className = 'error-word-item';
-                    span.innerHTML = `<button class="add-vocab-btn" data-word="${answer}">➕生词</button>`;
-                    parent.insertBefore(span, inp.nextSibling);
-                }
-            });
-            dictationFeedback.textContent = `✅ 正确 ${correct} / ${total}`;
-            // 绑定生词本按钮事件
-            document.querySelectorAll('.add-vocab-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const word = e.target.dataset.word;
-                    const lessonTitle = filteredLessons[currentIndex]?.title || '未知';
-                    addWordToVocab(word, lessonTitle);
-                    e.target.disabled = true;
-                    e.target.textContent = '✓已加';
-                });
-            });
-        }
-
-        function setDictMode(mode) {
-            dictMode = mode;
-            modeBtns.forEach(btn => {
-                if(btn.dataset.dictMode === mode) btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-            if(mode === 'custom') selectedWords.clear();
-            updateDictationPanel();
-        }
-
-        function loadLesson(index) {
-            if(!filteredLessons.length) { currentIndex=-1; audioPlayer.src=''; updatePlayerUI(); return; }
-            if(index<0) index=0; if(index>=filteredLessons.length) index=filteredLessons.length-1;
-            currentIndex=index; 
-            audioPlayer.src=filteredLessons[currentIndex].audio; 
+        function playLesson(lesson, category){
+            currentLesson = lesson;
+            currentCategory = category;
+            audioPlayer.src = lesson.audio;
             audioPlayer.load();
-            selectedWords.clear();
-            dictMode = 'random';
-            modeBtns.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-dict-mode="random"]').classList.add('active');
-            updatePlayerUI(); 
-            renderLessonList();
-            abLoopActive = false;
-            abLoopBtn.classList.remove('active');
-            loopStart = loopEnd = 0;
-            abLoopBtn.textContent = '🔄 AB循环';
-            audioPlayer.removeEventListener('timeupdate', abLoopCheck);
+            updatePlayerUI();
+            renderCategoryList();
             if(isPlaying) audioPlayer.play().catch(()=>{});
         }
 
-        function togglePlay() {
-            if(!audioPlayer.src||currentIndex===-1) { if(filteredLessons.length) loadLesson(0); else return; }
-            if(audioPlayer.paused) { audioPlayer.play(); playBtn.textContent='⏸️'; isPlaying=true; }
+        function togglePlay(){
+            if(!audioPlayer.src) return;
+            if(audioPlayer.paused){ audioPlayer.play(); playBtn.textContent='⏸️'; isPlaying=true; }
             else { audioPlayer.pause(); playBtn.textContent='▶️'; isPlaying=false; }
         }
 
-        function prevLesson() { if(!filteredLessons.length) return; let ni; if(loopMode===2) ni=Math.floor(Math.random()*filteredLessons.length); else { ni=currentIndex-1; if(ni<0) ni=filteredLessons.length-1; } loadLesson(ni); }
-        function nextLesson() { if(!filteredLessons.length) return; let ni; if(loopMode===2) ni=Math.floor(Math.random()*filteredLessons.length); else { ni=currentIndex+1; if(ni>=filteredLessons.length) ni=0; } loadLesson(ni); }
-
-        function onAudioEnded() {
-            if(loopMode===1) { audioPlayer.currentTime=0; audioPlayer.play(); } 
-            else { nextLesson(); if(isPlaying) audioPlayer.play(); }
+        function getFlatLessons(){
+            let flat = [];
+            filteredCategories.forEach(cat => cat.lessons.forEach(l => flat.push({lesson:l, category:cat})));
+            return flat;
         }
 
-        function handleABLoop() {
-            if(!abLoopActive) {
-                loopStart = audioPlayer.currentTime;
-                abLoopBtn.textContent = `🔴 设置终点`;
-                abLoopBtn.classList.add('active');
-                abLoopActive = true;
-            } else {
-                loopEnd = audioPlayer.currentTime;
-                if(loopEnd <= loopStart) { alert('终点必须大于起点'); abLoopActive=false; abLoopBtn.classList.remove('active'); abLoopBtn.textContent='🔄 AB循环'; return; }
-                abLoopBtn.textContent = `🔄 AB循环 (${formatTime(loopStart)}-${formatTime(loopEnd)})`;
-                audioPlayer.addEventListener('timeupdate', abLoopCheck);
-            }
-        }
+        function prevLesson(){ const flat=getFlatLessons(); if(!flat.length)return; let idx=flat.findIndex(i=>i.lesson.id===currentLesson?.id); idx=(idx-1+flat.length)%flat.length; playLesson(flat[idx].lesson, flat[idx].category); }
+        function nextLesson(){ const flat=getFlatLessons(); if(!flat.length)return; let idx=flat.findIndex(i=>i.lesson.id===currentLesson?.id); idx=(idx+1)%flat.length; playLesson(flat[idx].lesson, flat[idx].category); }
 
-        function abLoopCheck() {
-            if(!abLoopActive || loopEnd===0) return;
-            if(audioPlayer.currentTime >= loopEnd) {
-                audioPlayer.currentTime = loopStart;
-                audioPlayer.play();
-            }
-        }
-
-        function stopABLoop() {
-            abLoopActive = false;
-            abLoopBtn.classList.remove('active');
-            abLoopBtn.textContent = '🔄 AB循环';
-            audioPlayer.removeEventListener('timeupdate', abLoopCheck);
-        }
-
-        function renderLessonList() {
-            if(!filteredLessons.length) { lessonListEl.innerHTML='<div style="grid-column:1/-1;padding:50px;text-align:center;color:#6f8aac;">暂无课程</div>'; lessonCountSpan.textContent='0个资源'; return; }
-            let h='';
-            filteredLessons.forEach((l,idx)=>{
-                const active = idx===currentIndex;
-                const fav = favorites.has(l.id);
-                h+=`<div class="lesson-card ${active?'active-card':''}" data-index="${idx}">
-                    <div class="card-top"><div class="card-cover">${l.cover||'🎧'}</div><div class="card-info"><div class="card-title">${l.title}</div></div></div>
-                    <div class="card-meta"><span>📄 期数 ${l.count||'—'}</span><span>👥 订阅 ${l.sub||'—'}</span></div>
-                    <div class="card-desc">${l.desc||''}</div>
-                    <div class="card-footer"><span style="font-size:13px;color:#8da0b8;">点击播放</span><span class="fav-icon ${fav?'favorited':''}" data-id="${l.id}">${fav?'★':'☆'}</span></div>
-                </div>`;
+        function renderCategoryList(){
+            if(!filteredCategories.length){ categoryListEl.innerHTML='<div style="padding:30px;text-align:center;color:#888;">暂无栏目</div>'; return; }
+            let html='';
+            filteredCategories.forEach(cat => {
+                const expanded = cat.expanded || false;
+                html+=`<div class="category-card ${expanded?'expanded':''}" data-cat-id="${cat.id}">
+                    <div class="category-header"><div class="category-cover">${cat.cover}</div><div class="category-info"><div class="category-title">${cat.title}</div><div class="category-meta"><span>📄 ${cat.count}</span><span>👥 ${cat.sub}</span></div><div class="category-desc">${cat.desc}</div></div><span class="expand-icon">▶</span></div>
+                    <div class="lessons-list">`;
+                cat.lessons.forEach((lesson,idx)=>{
+                    const active = currentLesson?.id === lesson.id;
+                    const fav = favorites.has(lesson.id);
+                    html+=`<div class="lesson-item-sub ${active?'active':''}" data-lesson-id="${lesson.id}"><span class="lesson-index">${idx+1}</span><div class="lesson-info-sub"><div class="lesson-title-sub">${lesson.title}</div></div><span class="fav-icon-small" data-lesson-id="${lesson.id}" style="cursor:pointer;margin-left:8px;color:${fav?'#e67e22':'#b0c3db'};">${fav?'★':'☆'}</span></div>`;
+                });
+                html+=`</div></div>`;
             });
-            lessonListEl.innerHTML=h; lessonCountSpan.textContent=`${filteredLessons.length} 个资源`;
-            document.querySelectorAll('.lesson-card').forEach(c=>c.addEventListener('click',e=>{ if(e.target.closest('.fav-icon')) return; const i=parseInt(c.dataset.index); if(!isNaN(i)){ loadLesson(i); if(!isPlaying) audioPlayer.pause(); } }));
-            document.querySelectorAll('.fav-icon').forEach(s=>s.addEventListener('click',e=>{ e.stopPropagation(); toggleFavorite(parseInt(s.dataset.id)); if(currentViewMode==='favorites') applyFilter('favorites'); }));
+            categoryListEl.innerHTML=html;
+            lessonCountSpan.textContent = `${filteredCategories.length} 个栏目`;
+            document.querySelectorAll('.category-header').forEach(h=>h.addEventListener('click',e=>{ if(e.target.closest('.fav-icon-small'))return; const card=h.closest('.category-card'); const cat=filteredCategories.find(c=>c.id==card.dataset.catId); if(cat) cat.expanded=!cat.expanded; renderCategoryList(); }));
+            document.querySelectorAll('.lesson-item-sub').forEach(el=>el.addEventListener('click',e=>{ if(e.target.closest('.fav-icon-small'))return; const lid=el.dataset.lessonId; for(let cat of filteredCategories){ const l=cat.lessons.find(l=>l.id===lid); if(l){ playLesson(l,cat); break; } } }));
+            document.querySelectorAll('.fav-icon-small').forEach(s=>s.addEventListener('click',e=>{ e.stopPropagation(); const lid=s.dataset.lessonId; if(favorites.has(lid)) favorites.delete(lid); else favorites.add(lid); saveFav(); renderCategoryList(); updatePlayerUI(); }));
         }
 
-        function renderCategories() {
-            const cats = [...new Set(lessons.map(l=>l.category))];
+        function renderCategories(){
+            const cats = [...new Set(categories.map(c=>c.category))];
             let html=`<div class="cat-pill ${currentViewMode==='all'?'active':''}" data-cat="all">全部</div>`;
-            cats.forEach(c=>{ html+=`<div class="cat-pill ${(currentViewMode==='category'&&currentCategory===c)?'active':''}" data-cat="${c}">${c}</div>`; });
+            cats.forEach(c=>{ html+=`<div class="cat-pill ${(currentViewMode==='category'&&currentCatFilter===c)?'active':''}" data-cat="${c}">${c}</div>`; });
             categoryContainer.innerHTML=html;
             document.querySelectorAll('.cat-pill').forEach(b=>b.addEventListener('click',()=>{
-                const cat=b.dataset.cat; currentViewMode=(cat==='all')?'all':'category'; currentCategory=cat;
-                applyFilter(currentViewMode,cat);
-                document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active')); b.classList.add('active');
+                const cat=b.dataset.cat; currentViewMode=cat==='all'?'all':'category'; currentCatFilter=cat;
+                applyFilter(); document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active')); b.classList.add('active');
             }));
         }
 
-        function applyFilter(mode,cat=null) {
-            if(mode==='all') filteredLessons=[...lessons];
-            else if(mode==='category') filteredLessons=lessons.filter(l=>l.category===cat);
-            else if(mode==='favorites') filteredLessons=lessons.filter(l=>favorites.has(l.id));
-            if(!filteredLessons.length) { currentIndex=-1; audioPlayer.pause(); audioPlayer.src=''; isPlaying=false; playBtn.textContent='▶️'; }
-            else { const still= currentIndex>=0 && filteredLessons[currentIndex] && filteredLessons[currentIndex].id===lessons[currentIndex]?.id; if(!still) { currentIndex=0; loadLesson(0); if(isPlaying) audioPlayer.play(); } }
-            renderLessonList(); updatePlayerUI();
+        function applyFilter(){
+            if(currentViewMode==='all') filteredCategories=categories.map(c=>({...c, expanded:c.expanded||false}));
+            else filteredCategories=categories.filter(c=>c.category===currentCatFilter).map(c=>({...c, expanded:c.expanded||false}));
+            renderCategoryList();
         }
 
-        function bindEvents() {
+        function extractWords(t){ return [...new Set(t.split(/\s+/).filter(w=>w.length>1).map(w=>w.replace(/[.,!?;:]/g,'')))]; }
+        function updateDictationPanel(){
+            if(!currentLesson) return;
+            currentWords = extractWords(currentLesson.transcript||'');
+            if(dictMode==='custom'){ customWordSelectorWrapper.style.display='block'; refreshBtn.style.display='none'; renderWordSelector(); }
+            else { customWordSelectorWrapper.style.display='none'; refreshBtn.style.display='flex'; }
+            renderDictationExercise();
+        }
+        function renderWordSelector(){
+            if(!currentWords.length){ wordSelectorDiv.innerHTML='<span style="color:#888;">暂无词汇</span>'; return; }
+            let html=''; currentWords.forEach(w=>{ const sel=selectedWords.has(w)?'selected':''; html+=`<span class="word-chip ${sel}" data-word="${w}">${w}</span>`; });
+            wordSelectorDiv.innerHTML=html;
+            document.querySelectorAll('.word-chip').forEach(c=>c.addEventListener('click',()=>{ const w=c.dataset.word; if(selectedWords.has(w)) selectedWords.delete(w); else selectedWords.add(w); renderWordSelector(); renderDictationExercise(); }));
+        }
+        function renderDictationExercise(){
+            if(!currentLesson||!currentLesson.transcript){ dictationExercise.innerHTML='<span style="color:#888;">暂无原文</span>'; return; }
+            let text=currentLesson.transcript, wordsToBlank=[];
+            if(dictMode==='custom'){ wordsToBlank=Array.from(selectedWords); if(!wordsToBlank.length){ dictationExercise.innerHTML='<span style="color:#888;">请选择词汇</span>'; return; } }
+            else { if(!currentWords.length){ dictationExercise.innerHTML='<span style="color:#888;">词汇不足</span>'; return; } wordsToBlank=[...currentWords].sort(()=>0.5-Math.random()).slice(0,5); }
+            const pattern=new RegExp(`\\b(${wordsToBlank.join('|')})\\b`,'gi');
+            dictationExercise.innerHTML=text.replace(pattern,m=>`<input type="text" class="blank-input" data-answer="${m}" placeholder="_____">`);
+        }
+        function checkDictation(){
+            const inputs=document.querySelectorAll('.blank-input'); if(!inputs.length) return;
+            let correct=0; inputs.forEach(i=>{ if(i.value.trim().toLowerCase()===i.dataset.answer.toLowerCase()){ i.style.borderColor='#2ecc71'; correct++; } else { i.style.borderColor='#e74c3c'; const btn=document.createElement('span'); btn.innerHTML='<button class="add-vocab-btn" style="margin-left:6px;">➕生词</button>'; btn.querySelector('button').addEventListener('click',()=>{ addToVocab(i.dataset.answer, currentLesson?.title); }); i.parentNode.insertBefore(btn,i.nextSibling); } });
+            dictationFeedback.textContent=`✅ 正确 ${correct}/${inputs.length}`;
+        }
+
+        async function loadData(){
+            try{
+                const res=await fetch('data.json');
+                if(res.ok) categories=await res.json();
+                else throw new Error();
+            }catch(e){
+                categories=DEFAULT_CATEGORIES;
+            }
+            filteredCategories=categories.map(c=>({...c, expanded:false}));
+            renderCategories(); renderCategoryList();
+        }
+
+        function bindEvents(){
             audioPlayer.addEventListener('loadedmetadata',()=>{ durationTimeSpan.textContent=formatTime(audioPlayer.duration); progressBar.max=audioPlayer.duration||0; });
             audioPlayer.addEventListener('timeupdate',()=>{ currentTimeSpan.textContent=formatTime(audioPlayer.currentTime); progressBar.value=audioPlayer.currentTime; });
-            audioPlayer.addEventListener('ended',onAudioEnded);
+            audioPlayer.addEventListener('ended',()=>{ if(loopMode===1) audioPlayer.play(); else nextLesson(); });
             audioPlayer.addEventListener('play',()=>{ playBtn.textContent='⏸️'; isPlaying=true; });
             audioPlayer.addEventListener('pause',()=>{ playBtn.textContent='▶️'; isPlaying=false; });
             progressBar.addEventListener('input',e=>audioPlayer.currentTime=e.target.value);
             speedSelect.addEventListener('change',e=>audioPlayer.playbackRate=parseFloat(e.target.value));
             playBtn.addEventListener('click',togglePlay);
             prevBtn.addEventListener('click',prevLesson); nextBtn.addEventListener('click',nextLesson);
-            
-            document.querySelectorAll('.loop-opt').forEach(opt=>{
-                opt.addEventListener('click',()=>{
-                    loopMode = parseInt(opt.dataset.mode);
-                    document.querySelectorAll('.loop-opt').forEach(o=>o.classList.remove('active'));
-                    opt.classList.add('active');
-                });
-            });
-            document.querySelector('.loop-opt[data-mode="0"]').classList.add('active');
-
-            abLoopBtn.addEventListener('click', ()=>{
-                if(!audioPlayer.src || currentIndex===-1) return;
-                if(!abLoopActive) handleABLoop();
-                else {
-                    if(abLoopActive && loopEnd===0) {
-                        loopEnd = audioPlayer.currentTime;
-                        abLoopBtn.textContent = `🔄 AB循环 (${formatTime(loopStart)}-${formatTime(loopEnd)})`;
-                        audioPlayer.addEventListener('timeupdate', abLoopCheck);
-                    } else { stopABLoop(); loopStart=0; loopEnd=0; }
-                }
-            });
-
-            favCurrentBtn.addEventListener('click',()=>{ if(currentIndex>=0) { toggleFavorite(filteredLessons[currentIndex].id); if(currentViewMode==='favorites') applyFilter('favorites'); } });
-            showFavoritesBtn.addEventListener('click',()=>{ currentViewMode='favorites'; applyFilter('favorites'); document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active')); });
-            
-            tabBtns.forEach(tab=>{
-                tab.addEventListener('click', ()=>{
-                    const target = tab.dataset.tab;
-                    tabBtns.forEach(t=>t.classList.remove('active'));
-                    tab.classList.add('active');
-                    if(target==='transcript') { transcriptPanel.style.display='block'; dictationPanel.style.display='none'; }
-                    else { transcriptPanel.style.display='none'; dictationPanel.style.display='block'; updateDictationPanel(); }
-                });
-            });
-            
-            toggleTranscriptBtn.addEventListener('click', ()=>{
-                if(transcriptContent.style.display==='none') { transcriptContent.style.display='block'; toggleTranscriptBtn.textContent='隐藏'; }
-                else { transcriptContent.style.display='none'; toggleTranscriptBtn.textContent='显示'; }
-            });
-
-            checkDictationBtn.addEventListener('click', checkDictation);
-            modeBtns.forEach(btn => btn.addEventListener('click', () => setDictMode(btn.dataset.dictMode)));
-            refreshBtn.addEventListener('click', generateRandomDictation);
-            toggleAnswerHintBtn.addEventListener('click', ()=>{
-                showAnswerHint = !showAnswerHint;
-                toggleAnswerHintBtn.textContent = showAnswerHint ? '🙈 隐藏原文' : '👁️ 显示原文';
-                // 可以调整样式，但核心是显示原文区域？ 这里简单控制原文面板可见性
-                if(showAnswerHint) {
-                    transcriptContent.style.display='block';
-                } else {
-                    transcriptContent.style.display='none';
-                }
-            });
-            
-            showVocabBtn.addEventListener('click', ()=>{
-                if(globalVocabPanel.style.display==='none') { globalVocabPanel.style.display='block'; renderVocabList(); }
-                else globalVocabPanel.style.display='none';
-            });
-            clearAllVocabBtn.addEventListener('click', ()=>{ vocabList=[]; saveVocab(); renderVocabList(); });
-
-            document.addEventListener('keydown',e=>{ if(e.code==='Space'&&!e.target.matches('input,select,button')){ e.preventDefault(); togglePlay(); } });
+            document.querySelectorAll('.loop-opt').forEach(o=>o.addEventListener('click',()=>{ loopMode=parseInt(o.dataset.mode); document.querySelectorAll('.loop-opt').forEach(oo=>oo.classList.remove('active')); o.classList.add('active'); }));
+            favCurrentBtn.addEventListener('click',()=>{ if(!currentLesson)return; const id=currentLesson.id; if(favorites.has(id)) favorites.delete(id); else favorites.add(id); saveFav(); updatePlayerUI(); renderCategoryList(); });
+            showFavoritesBtn.addEventListener('click',()=>{ filteredCategories=categories.filter(c=>c.lessons.some(l=>favorites.has(l.id))).map(c=>({...c,expanded:true})); renderCategoryList(); });
+            toggleTranscriptBtn.addEventListener('click',()=>{ transcriptContent.style.display=transcriptContent.style.display==='none'?'block':'none'; });
+            tabBtns.forEach(t=>t.addEventListener('click',()=>{ const tab=t.dataset.tab; tabBtns.forEach(tt=>tt.classList.remove('active')); t.classList.add('active'); if(tab==='transcript'){ transcriptPanel.style.display='block'; dictationPanel.style.display='none'; } else { transcriptPanel.style.display='none'; dictationPanel.style.display='block'; updateDictationPanel(); } }));
+            modeBtns.forEach(b=>b.addEventListener('click',()=>{ dictMode=b.dataset.dictMode; modeBtns.forEach(m=>m.classList.remove('active')); b.classList.add('active'); selectedWords.clear(); updateDictationPanel(); }));
+            refreshBtn.addEventListener('click',()=>renderDictationExercise());
+            checkDictationBtn.addEventListener('click',checkDictation);
+            showVocabBtn.addEventListener('click',()=>{ globalVocabPanel.style.display=globalVocabPanel.style.display==='none'?'block':'none'; renderVocabList(); });
+            clearAllVocabBtn.addEventListener('click',()=>{ vocabList=[]; saveVocab(); });
+            abLoopBtn.addEventListener('click',()=>{ if(!audioPlayer.src)return; if(!abLoopActive){ loopStart=audioPlayer.currentTime; abLoopBtn.textContent='🔴 设置终点'; abLoopActive=true; } else { loopEnd=audioPlayer.currentTime; if(loopEnd<=loopStart){ alert('终点需大于起点'); return; } abLoopBtn.textContent=`🔄 AB循环 (${formatTime(loopStart)}-${formatTime(loopEnd)})`; audioPlayer.addEventListener('timeupdate', function abCheck(){ if(audioPlayer.currentTime>=loopEnd) audioPlayer.currentTime=loopStart; }); } });
         }
 
-        // 初始化
-        loadFavorites();
-        loadVocab();
+        loadFav(); loadVocab();
         bindEvents();
-        filteredLessons = [...lessons];
-        renderCategories();
-        renderLessonList();
-        updatePlayerUI();
-        setDictMode('random');
-        transcriptContent.style.display='none'; // 默认隐藏原文，符合答题习惯
-        toggleAnswerHintBtn.textContent = '👁️ 显示原文';
+        loadData();
     })();
 </script>
 </body>
