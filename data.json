@@ -3,99 +3,219 @@
     "id": 1,
     "title": "BBC精选",
     "category": "BBC精选",
-    "count": "2000",
-    "sub": "95w+",
-    "desc": "英国广播新闻，含中英字幕、讲解及听写训练。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/20260417bbc.mp3",
+    "count": "2150",
+    "sub": "98w+",
+    "desc": "英国广播公司权威新闻与深度报道，包含气候变化、科技前沿及文化解析。",
     "cover": "🇬🇧",
-    "transcript": "Vietnam's new president To Lam has held talks with his Chinese counterpart during a visit to Beijing.\n Chinese state media said President Xi Jinping expressed his willingness to work with To Lam to continuously strengthen their respective socialist causes.\n The 2 countries have sought to deepen already close economic ties amid the global trade upheaval from President Trump's tariffs.\n Legislators in the northeastern U.S. state of Maine have passed a bill that could make it the first state to put a moratorium on new data centers linked to the massive expansion of artificial intelligence. \n The bill still needs approval from the governor. \n A BBC investigation in Britain has revealed a shadow industry of legal advisers charging thousands of dollars to help migrants pretend to be gay in order to claim asylum and stay in the country.\n International students and migrant workers whose visas are due to run out are being given fake cover stories for their asylum claims. \n Our Politics Investigation correspondent Billy Kenber reports. \n Advisers to asvlum seekers are extracting fees from international students and workers who want to stay in the country. \n One advisor told a BBC Undercover reporter his only hope was to claim asylum by pretending to be gay and sent him to an event for gay asylum seekers. \n The BBC filmed men there saying they weren't genuinely gay. The adviser denied all wrongdoing. \n The Home Office said anyone found trying to exploit the system will face the full force of the law. \n Kanye West has postponed a concert in the French city of Marseille, scheduled for June. \n It follows reports that the country's interior minister was seeking to block the performance because of the American rapper's historic anti-Semitic remarks. \n Last week, the Wireless Festival in the UK was cancelled after West,  known as Ye, was denied entry to Britain. \n West has apologized for his behavior, which he blamed on his bipolar disorder. And that's the latest world news from the BBC."
+    "lessons": [
+      {
+        "id": "bbc-1",
+        "title": "全球气候峰会新承诺",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        "transcript": "At the recent climate summit in London, world leaders have pledged to cut methane emissions by 30 percent before 2030. The new commitment also includes financial support for developing nations to adopt green energy. Environmental groups welcomed the announcement but warned that verification systems must be strengthened. The British Prime Minister called it a historic step forward in the fight against global warming."
+      },
+      {
+        "id": "bbc-2",
+        "title": "人工智能监管白皮书发布",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        "transcript": "The UK government has unveiled a white paper on artificial intelligence regulation, focusing on transparency and accountability. The proposed rules aim to balance innovation with public safety. Tech companies will be required to label AI-generated content clearly. Critics argue that the framework lacks enforcement mechanisms, while supporters believe it sets a global standard for responsible AI development."
+      },
+      {
+        "id": "bbc-3",
+        "title": "大英博物馆归还文物谈判",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        "transcript": "Officials from Greece and the UK have resumed talks over the return of the Parthenon sculptures, also known as the Elgin Marbles. The British Museum has expressed willingness to explore a long-term loan agreement. Greek authorities insist on permanent repatriation. Cultural experts say a compromise could set a precedent for other disputed artifacts worldwide."
+      }
+    ]
   },
   {
     "id": 2,
     "title": "VOA慢速英语",
     "category": "VOA慢速英语",
-    "count": "2000",
-    "sub": "126w+",
-    "desc": "VOA官方授权，每日同步，适合初学者。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/voa_slow.mp3",
+    "count": "2100",
+    "sub": "130w+",
+    "desc": "VOA官方授权慢速英语节目，语速适中，适合初级至中级学习者。",
     "cover": "🐢",
-    "transcript": "Scientists say they have found evidence of water on Mars. This discovery could mean that life once existed on the red planet. The research was published in the journal Nature."
+    "lessons": [
+      {
+        "id": "voa-slow-1",
+        "title": "美国国家公园游客创新高",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        "transcript": "Visitors to America's national parks reached a record high last year. More than 300 million people visited parks like Yellowstone and Yosemite. Officials say many people want to spend time in nature after the pandemic. They also remind visitors to follow safety rules and protect wildlife."
+      },
+      {
+        "id": "voa-slow-2",
+        "title": "科学家发现新种珊瑚",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+        "transcript": "Marine biologists have discovered a new species of coral in the deep waters near Hawaii. The pink and purple coral lives at depths of over 2000 meters. Researchers say it is important to protect these fragile ecosystems from deep-sea mining. The discovery was published in the journal Marine Biology."
+      }
+    ]
   },
   {
     "id": 3,
     "title": "VOA常速英语",
     "category": "VOA常速英语",
-    "count": "1618",
-    "sub": "76w+",
-    "desc": "VOA官方授权，常速新闻（暂停更新说明已标注）。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/voa_standard.mp3",
+    "count": "1650",
+    "sub": "79w+",
+    "desc": "VOA标准语速新闻，涵盖政治、经济、科技等实时话题。",
     "cover": "⚡",
-    "transcript": "The White House has ordered a significant budget cut, leading to the suspension of most VOA employees. The future of international broadcasting remains uncertain."
+    "lessons": [
+      {
+        "id": "voa-std-1",
+        "title": "美联储宣布降息25个基点",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+        "transcript": "The Federal Reserve cut interest rates by a quarter percentage point on Wednesday, citing cooling inflation and a stable labor market. Chair Jerome Powell indicated that further cuts are possible later this year if economic data continues to show moderation. Stock markets responded with modest gains, while some economists warned about potential asset bubbles."
+      },
+      {
+        "id": "voa-std-2",
+        "title": "欧盟通过数字市场法案修正案",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+        "transcript": "European Union lawmakers have approved amendments to the Digital Markets Act, imposing stricter obligations on tech giants. The new rules require messaging apps to be interoperable and give users more control over their data. Companies that violate the regulations could face fines of up to 10 percent of global annual revenue."
+      }
+    ]
   },
   {
     "id": 4,
     "title": "经济学人合集",
     "category": "经济学人",
-    "count": "2000",
-    "sub": "78w+",
-    "desc": "《经济学人》国际新闻周刊，政商精英必读。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/economist.mp3",
+    "count": "2050",
+    "sub": "81w+",
+    "desc": "《经济学人》周刊精选文章，聚焦全球商业、金融与国际关系。",
     "cover": "📊",
-    "transcript": "Global inflation continues to challenge central banks. The Federal Reserve signaled further interest rate hikes. Economists are divided on whether a soft landing is possible."
+    "lessons": [
+      {
+        "id": "eco-1",
+        "title": "半导体供应链重构",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+        "transcript": "A new report from The Economist examines the reshaping of global semiconductor supply chains. The United States and Europe are investing billions to reduce reliance on East Asian foundries. However, experts note that building domestic capacity will take years and may not fully replace existing networks. The article also discusses the strategic implications for the tech industry."
+      },
+      {
+        "id": "eco-2",
+        "title": "远程办公对城市商业地产的冲击",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+        "transcript": "Permanent remote work arrangements have led to record vacancy rates in office buildings across major cities like San Francisco and London. Property owners are converting empty spaces into residential units or storage facilities. The shift is also affecting local businesses that rely on weekday foot traffic, such as cafes and dry cleaners. Urban planners are rethinking the future of downtown districts."
+      }
+    ]
   },
   {
     "id": 5,
     "title": "VOA慢速-时事新闻",
     "category": "VOA慢速英语",
-    "count": "1022",
-    "sub": "3w+",
-    "desc": "VOA慢速 In the News 系列。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/voa_news.mp3",
+    "count": "1050",
+    "sub": "4w+",
+    "desc": "VOA慢速英语 In the News 系列，聚焦每周热点事件。",
     "cover": "📰",
-    "transcript": "Health officials are concerned about a new virus variant spreading in several countries. Vaccination remains the best defense, according to experts."
+    "lessons": [
+      {
+        "id": "voa-news-1",
+        "title": "印度成功登月任务",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+        "transcript": "India has become the fourth country to successfully land a spacecraft on the moon. The Chandrayaan-3 mission touched down near the lunar south pole. Scientists hope to find water ice in the region. The mission is a major success for the Indian Space Research Organization and inspires young scientists across the country."
+      },
+      {
+        "id": "voa-news-2",
+        "title": "法国农民抗议欧盟环保新规",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+        "transcript": "French farmers blocked highways near Paris to protest new European Union environmental rules. They say the regulations make it harder to grow crops and raise animals. The government has promised to discuss their concerns. The protest is the latest in a series of farmer demonstrations across Europe."
+      }
+    ]
   },
   {
     "id": 6,
     "title": "科学美国人",
     "category": "科学美国人",
-    "count": "1973",
-    "sub": "33w+",
-    "desc": "60秒科学，托福雅思听力绝佳材料。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/sciam.mp3",
+    "count": "2000",
+    "sub": "35w+",
+    "desc": "《科学美国人》60秒科学栏目，托福雅思听力绝佳训练材料。",
     "cover": "🔬",
-    "transcript": "A new study reveals that dolphins use unique whistles to identify each other. This suggests a complex social structure similar to human names."
+    "lessons": [
+      {
+        "id": "sciam-1",
+        "title": "章鱼神经系统的独特演化",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3",
+        "transcript": "A new study in Nature reveals that octopuses have a unique nervous system that allows each arm to make decisions independently. Researchers mapped the neural pathways and found that two-thirds of the neurons are located in the arms. This decentralized structure may explain their remarkable problem-solving abilities and escape tactics."
+      },
+      {
+        "id": "sciam-2",
+        "title": "小行星样本返回地球",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3",
+        "transcript": "NASA's OSIRIS-REx mission successfully returned samples from the asteroid Bennu. The capsule landed in the Utah desert containing about 250 grams of rocky material. Scientists believe these pristine samples could reveal clues about the formation of the solar system and the origin of organic molecules. Preliminary analysis shows high carbon and water content."
+      }
+    ]
   },
   {
     "id": 7,
     "title": "NPR News",
     "category": "NPR News",
-    "count": "928",
-    "sub": "9w+",
-    "desc": "美国国家公共电台新闻，每月更新。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/npr.mp3",
+    "count": "950",
+    "sub": "10w+",
+    "desc": "美国国家公共电台新闻，每周更新，涵盖社会文化与科技。",
     "cover": "🎙️",
-    "transcript": "The Supreme Court heard arguments in a case that could reshape internet speech laws. Tech companies are watching closely."
+    "lessons": [
+      {
+        "id": "npr-1",
+        "title": "美国图书馆电子书借阅争议",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3",
+        "transcript": "Librarians across the United States are raising concerns about the rising cost of e-books for public libraries. Major publishers charge libraries up to five times the consumer price for digital copies, which expire after a limited number of borrows. The American Library Association is urging lawmakers to pass legislation that ensures fair access to digital content."
+      },
+      {
+        "id": "npr-2",
+        "title": "人工智能生成音乐版权案开庭",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
+        "transcript": "A federal court in New York heard arguments in a landmark case about whether AI-generated music can be copyrighted. The plaintiff, a composer, used an AI tool to create melodies but wants exclusive rights. The defendant argues that without human authorship, the music belongs to the public domain. The ruling could reshape the creative industry."
+      }
+    ]
   },
   {
     "id": 8,
     "title": "TED演讲视频",
     "category": "TED演讲",
-    "count": "1258",
-    "sub": "43w+",
-    "desc": "TED官方授权演讲，覆盖科技/设计/娱乐。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/ted.mp3",
+    "count": "1300",
+    "sub": "45w+",
+    "desc": "TED官方授权演讲，启发思考的创新观点与前沿研究。",
     "cover": "💡",
-    "transcript": "Creativity is not a talent, it's a way of operating. We need to create environments where people feel safe to fail and try new things."
+    "lessons": [
+      {
+        "id": "ted-1",
+        "title": "如何培养孩子的数字韧性",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
+        "transcript": "In this TED talk, psychologist Devorah Heitner explains why digital resilience is more important than screen time limits. She suggests that parents should have open conversations about online experiences rather than imposing strict bans. Her research shows that children who learn to navigate challenges online are less likely to suffer from cyberbullying and social comparison."
+      },
+      {
+        "id": "ted-2",
+        "title": "深海未知生态系统的启示",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3",
+        "transcript": "Marine biologist Edith Widder shares stunning footage of bioluminescent creatures from the deep ocean. She argues that we have explored less than five percent of the ocean floor and that new species are waiting to be discovered. Her work highlights the urgent need for marine protected areas before deep-sea mining destroys these fragile habitats."
+      }
+    ]
   },
   {
     "id": 9,
     "title": "AP News",
     "category": "AP News",
-    "count": "1060",
-    "sub": "5w+",
-    "desc": "美联社一分钟新闻，每日更新。",
-    "audio": "https://raw.githubusercontent.com/Zhuguli2026/listening-lab/main/audio/ap.mp3",
+    "count": "1080",
+    "sub": "6w+",
+    "desc": "美联社一分钟新闻，每日更新，快速掌握全球动态。",
     "cover": "📡",
-    "transcript": "The latest jobs report shows stronger than expected growth. Unemployment remains at historic lows. Markets reacted positively to the news."
+    "lessons": [
+      {
+        "id": "ap-1",
+        "title": "墨西哥通过司法改革法案",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-18.mp3",
+        "transcript": "Mexico's Congress has approved a sweeping judicial reform that changes how judges are selected. The new system replaces appointments with popular elections for some federal judges. Supporters say it fights corruption, while critics worry about politicizing the courts. The president is expected to sign the bill into law next week."
+      },
+      {
+        "id": "ap-2",
+        "title": "国际空间站宇航员完成太空行走",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-19.mp3",
+        "transcript": "Two astronauts from the United States and Japan completed a six-hour spacewalk outside the International Space Station. They installed new solar panels and replaced a faulty camera module. NASA officials confirmed that all objectives were met without any safety issues. The space station continues to operate with a full crew of seven."
+      },
+      {
+        "id": "ap-3",
+        "title": "威尼斯开始收取游客入城费",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-20.mp3",
+        "transcript": "Venice has launched a pilot program charging day-trippers a five-euro entry fee on peak weekends. The measure aims to reduce overcrowding and encourage longer stays. Local residents and hotel guests are exempt. Early data shows a slight decrease in visitor numbers, but officials say it is too early to determine long-term effects."
+      }
+    ]
   }
 ]
